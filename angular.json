@@ -2,5 +2,47 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",
-  "projects": {}
+  "projects": {
+    "ng-router-outlet-comm": {
+      "projectType": "library",
+      "root": "projects/ng-router-outlet-comm",
+      "sourceRoot": "projects/ng-router-outlet-comm/src",
+      "prefix": "roc",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ng-router-outlet-comm/tsconfig.lib.json",
+            "project": "projects/ng-router-outlet-comm/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ng-router-outlet-comm/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ng-router-outlet-comm/src/test.ts",
+            "tsConfig": "projects/ng-router-outlet-comm/tsconfig.spec.json",
+            "karmaConfig": "projects/ng-router-outlet-comm/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ng-router-outlet-comm/tsconfig.lib.json",
+              "projects/ng-router-outlet-comm/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+  },
+  "defaultProject": "ng-router-outlet-comm"
 }

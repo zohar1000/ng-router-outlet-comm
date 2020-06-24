@@ -14,7 +14,13 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "ng-router-outlet-comm": [
+        "dist/ng-router-outlet-comm/ng-router-outlet-comm",
+        "dist/ng-router-outlet-comm"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
