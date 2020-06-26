@@ -1,6 +1,6 @@
 {
   "name": "ng-router-outlet-comm",
-  "version": "1.0.4",
+  "version": "1.0.6",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -9,7 +9,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "lib:build": "ng build ng-router-outlet-comm --prod",
-    "lib:publish": "cd dist/ng-router-outlet-comm && npm publish"
+    "lib:publish": "npm run lib:build && cd dist/ng-router-outlet-comm && npm publish"
   },
   "private": true,
   "dependencies": {
