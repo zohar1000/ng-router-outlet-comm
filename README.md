@@ -1,26 +1,40 @@
-# NgRouterOutletComm
+The directive provides communication between parent and child over router outlet
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.11.
+Angular does not support using @Input and @Output between parent and child if the child is a routed child.
+This directive provides a simple way for communication:
+    to send an event - use EventEmitter
+    to receive an event - provide a function
 
-## Code scaffolding
+The directive also supports the case of a parent with multiple children, where a different child is displayed via navigation. 
 
-Run `ng generate component component-name --project ng-router-outlet-comm` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project ng-router-outlet-comm`.
-> Note: Don't forget to add `--project ng-router-outlet-comm` or else it will be added to the default project in your `angular.json` file. 
 
-## Build
+parent.component.ts
 
-Run `ng build ng-router-outlet-comm` to build the project. The build artifacts will be stored in the `dist/` directory.
+class ParentComponent {
+  sendToChildEmitter = new EventEmitter();
 
-## Publishing
+  onChildEvent(data) {
+    // your logic here
+  }
+parent.component.html
 
-After building your library with `ng build ng-router-outlet-comm`, go to the dist folder `cd dist/ng-router-outlet-comm` and run `npm publish`.
+<div [ngRouterOutletComm]="{ type: 'parent', sender: sendToChildEmitter, receiver: onChildEvent }">
 
-## Running unit tests
 
-Run `ng test ng-router-outlet-comm` to execute the unit tests via [Karma](https://karma-runner.github.io).
+child.component.ts
 
-## Further help
+class ChildComponent {
+  sendToParentEmitter = new EventEmitter();
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
-The directive provides communication between parent and child over router outlet.
- 
+  onParentEvent(data) {
+    // your logic here
+  }
+child.component.html
+
+  <div [ngRouterOutletComm]="{ type: 'child', sender: sendToParentEmitter, receiver: onParentEvent }">
+
+That's it.
+
+example of sending data from child to parent:
+
+this.sendToParentEmitter.emit({ name: 'Carrie' });
