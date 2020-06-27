@@ -1,4 +1,4 @@
-The directive provides communication between parent and child over router outlet.<br/><br/>
+The directive provides communication between parent and child over router outlet.<br/>
 
 Angular does not support using @Input and @Output between parent and child if the child is a routed child.<br/>
 This directive provides a simple way for communication:<br/>
