@@ -37,6 +37,11 @@ class ChildComponent {
 <br/>
 That's it.<br/><br/><br/>
 
+Installing the directive:
+```
+npm i ng-router-outlet-comm
+```
+
 To declare the directive in your project, import 'NgRouterOutletCommModule' either in the SharedModule or in the module you use it.<br/><br/>
 example of sending data from child to parent:
 ```
