@@ -28,7 +28,7 @@ export class NgRouterOutletCommDirective implements AfterViewInit, OnDestroy {
         this.setCommunication();
         break;
       case 'parent':
-        this.routerOutlet = this.elementRef.nativeElement.getElementsByTagName('router-outlet')[0];
+        this.routerOutlet = this.elementRef.nativeElement;
         this.setCommunication();
     }
   }
