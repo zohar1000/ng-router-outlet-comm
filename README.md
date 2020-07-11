@@ -47,3 +47,15 @@ example of sending data from child to parent:
 ```
 this.sendToParentEmitter.emit({ name: 'John' });
 ```
+<br/>
+
+**How the directive operates.**<br/>
+In javascript you can dispatch and listen to events on dom elements.<br/>
+The directive do it by using the <router-outlet> dom element itself.<br/>
+The 2 directive instances, one for the parent and one for the client, dispatch and listen<br/>
+to events on that dom element in order to communicate between themselves.<br/><br/>
+
+You do not need to worry about garbage cleaning.<br/>
+The directive implements ngOnDestroy (it can be done on directives as well), and once the component 
+is destroyed then angular invokes the directive's ngOnDestroy function which removes any listeners. 
+
