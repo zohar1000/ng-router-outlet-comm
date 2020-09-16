@@ -17,7 +17,7 @@ class ParentComponent {
 
 **parent.component.html** - place the directive in the router-outlet element (router-outlet can be used since it is a regular dom element)
 ```
-<router-outlet [ngRouterOutletComm]="{ type: 'parent', sender: sendToChildEmitter, receiver: onChildEvent }"></router-outlet>
+<router-outlet [ngRouterOutletComm]="{ type: 'parent', sender: sendToChildEmitter, receiver: onChildEvent.bind(this) }"></router-outlet>
 ```
 <br/><br/>
 **child.component.ts** - provide event emitter and a function
@@ -32,7 +32,7 @@ class ChildComponent {
 
 **child.component.html** - place the directive somewhere in your child template
 ```
-  <ng-container [ngRouterOutletComm]="{ type: 'child', sender: sendToParentEmitter, receiver: onParentEvent }"></ng-container>
+  <ng-container [ngRouterOutletComm]="{ type: 'child', sender: sendToParentEmitter, receiver: onParentEvent.bind(this) }"></ng-container>
 ```
 <br/>
 That's it.<br/><br/><br/>
